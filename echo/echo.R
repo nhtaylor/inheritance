@@ -1,8 +1,5 @@
-
 # Set working directory
 setwd("~/Desktop/echo")
-
-
 new_data <- read.table('echo.dat', sep=' ')
 names(new_data) <- c('R0000100',
   'R0000600',
@@ -159,7 +156,6 @@ names(new_data) <- c('R0000100',
 
 
 # Handle missing values
-
   new_data[new_data == -1] = NA  # Refused 
   new_data[new_data == -2] = NA  # Dont know 
   new_data[new_data == -3] = NA  # Invalid missing 
@@ -168,7 +164,6 @@ names(new_data) <- c('R0000100',
 
 
 # If there are values not categorized they will be represented as NA
-
 vallabels = function(data) {
   
   data$R0173600 <- factor(data$R0173600, 
@@ -531,7 +526,6 @@ varlabels <- c("ID# (1-12686) 79",
 
 
 # Use qnames rather than rnums
-
 qnames = function(data) {
   names(data) <- c("CASEID_1979",
     "FAM-1B_1979",
@@ -691,9 +685,7 @@ qnames = function(data) {
   return(data)
 }
 
-
-#********************************************************************************************************
-
+# ******************************************************************************************************
 # Remove the '#' before the following line to create a data file called "categories" with value labels. 
 categories <- vallabels(new_data)
 
@@ -707,6 +699,4 @@ categories <- qnames(categories)
 # Remove the '#' before the following lines to produce summaries for the "categories" data file.
 #categories <- vallabels(new_data)
 #summary(categories)
-
-#************************************************************************************************************
-
+#*******************************************************************************************************
