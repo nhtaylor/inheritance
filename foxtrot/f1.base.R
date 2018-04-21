@@ -1,6 +1,6 @@
 # Set working directory
 setwd("~/Desktop/foxtrot")
-
+# Reading in data
 new_data <- read.table('foxtrot.dat', sep=' ')
 names(new_data) <- c('R0000100',
   'R0000600',
@@ -176,18 +176,14 @@ names(new_data) <- c('R0000100',
   'T4114600',
   'T4120200')
 
-
 # Handle missing values
-
   new_data[new_data == -1] = NA  # Refused 
   new_data[new_data == -2] = NA  # Dont know 
   new_data[new_data == -3] = NA  # Invalid missing 
   new_data[new_data == -4] = NA  # Valid missing 
   new_data[new_data == -5] = NA  # Non-interview 
 
-
 # If there are values not categorized they will be represented as NA
-
   vallabels = function(data) {
     
     data$R0173600 <- factor(data$R0173600, 
@@ -396,8 +392,7 @@ names(new_data) <- c('R0000100',
     return(data)
   }  
 
-
-
+## Variable labls as found in Investigator
 varlabels <- c("ID# (1-12686) 79",
   "AGE OF R 79",
   "HGC BY RS MOTHER 79",
@@ -573,9 +568,7 @@ varlabels <- c("ID# (1-12686) 79",
   "NUMBER OF CHILDREN EVER BORN 2012"
 )
 
-
 # Use qnames rather than rnums
-
 qnames = function(data) {
   names(data) <- c("CASEID_1979",
     "FAM-1B_1979",
@@ -753,8 +746,7 @@ qnames = function(data) {
   return(data)
 }
 
-
-#********************************************************************************************************
+## ***  ## *** ## *** ## ***  ## *** ## *** ##
 
 # Remove the '#' before the following line to create a data file called "categories" with value labels. 
 categories <- vallabels(new_data)
@@ -770,5 +762,5 @@ summary(new_data)
 #categories <- vallabels(new_data)
 #summary(categories)
 
-#************************************************************************************************************
+## ***  ## *** ## *** ## ***  ## *** ## *** ##
 

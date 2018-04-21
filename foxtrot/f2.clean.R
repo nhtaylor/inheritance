@@ -239,10 +239,10 @@ table(echo$degree_1990)
 # 1991
 table(echo$degree_1991)
 echo$degree_1991 <- ifelse(echo$degree_1991 == 1, 1,
-                           ifelse(echo$degree_1991 == 2, 2,
-                                  ifelse(echo$degree_1991 == 3 | echo$degree_1991 == 4, 3,
-                                         ifelse(echo$degree_1991 >= 5, 4,
-                                                0))))
+                    ifelse(echo$degree_1991 == 2, 2,
+                    ifelse(echo$degree_1991 == 3 | echo$degree_1991 == 4, 3,
+                    ifelse(echo$degree_1991 >= 5, 4,
+                      0))))
 table(echo$degree_1991)
 echo$degree_1991 <- ifelse(echo$degree_1991 > echo$degree_1990, echo$degree_1991,
                            echo$degree_1990)
@@ -347,10 +347,10 @@ table(echo$degree_2004)
 # 2006
 table(echo$degree_2006)
 echo$degree_2006 <- ifelse(echo$degree_2006 == 1, 1,
-                           ifelse(echo$degree_2006 == 2, 2,
-                                  ifelse(echo$degree_2006 == 3 | echo$degree_2006 == 4, 3,
-                                         ifelse(echo$degree_2006 >= 5, 4,
-                                                0))))
+                    ifelse(echo$degree_2006 == 2, 2,
+                    ifelse(echo$degree_2006 == 3 | echo$degree_2006 == 4, 3,
+                    ifelse(echo$degree_2006 >= 5, 4,
+                      0))))
 table(echo$degree_2006)
 echo$degree_2006 <- ifelse(echo$degree_2006 > echo$degree_2004, echo$degree_2006,
                            echo$degree_2004)
@@ -422,7 +422,6 @@ echo$gift_1992 <- ifelse(echo$gift_1992 == 1 & is.na(echo$gift_1991), 1,
                     0))))))
 table(echo$gift_1992)
 echo$value_1992 <- echo$value_1991 + echo$value_1992
-
 # 2002 > 2004
 table(echo$gift_2004)
 echo$gift_2004 <- ifelse(echo$gift_2004 == 1 & is.na(echo$gift_2002), 1,
@@ -434,7 +433,6 @@ echo$gift_2004 <- ifelse(echo$gift_2004 == 1 & is.na(echo$gift_2002), 1,
                     0))))))
 table(echo$gift_2004)
 echo$value_2004 <- echo$value_2002 + echo$value_2004
-
 ## 2006 > 2008
 table(echo$gift_2008)
 echo$gift_2004 <- ifelse(echo$gift_2004 == 1 & is.na(echo$gift_2002), 1,
@@ -446,7 +444,6 @@ echo$gift_2004 <- ifelse(echo$gift_2004 == 1 & is.na(echo$gift_2002), 1,
                     0))))))
 table(echo$gift_2008)
 echo$value_2004 <- echo$value_2002 + echo$value_2004
-
 ## 2010 > 2012
 table(echo$gift_2012)
 echo$gift_2012 <- ifelse(echo$gift_2012 == 1 & is.na(echo$gift_2010), 1,
@@ -479,7 +476,29 @@ echo$value_2012 <- echo$value_2010 + echo$value_2012
 # echo$hours_2012 <- )
 
 ## RURAL-URBAN RESIDENCE
-
+## -1 for rural, 1 for urban, 0 for unknown
+echo$reside_1988 <- ifelse(echo$reside_1988 == 1, 1, -1)
+echo$reside_1989 <- ifelse(echo$reside_1989 == 1, 1, -1)
+echo$reside_1990 <- ifelse(echo$reside_1990 == 1, 1, -1)
+echo$reside_1992 <- ifelse(echo$reside_1992 == 1, 1, -1)
+echo$reside_1993 <- ifelse(echo$reside_1993 == 1, 1, -1)
+echo$reside_1994 <- ifelse(echo$reside_1994 == 1, 1, -1)
+echo$reside_1996 <- ifelse(echo$reside_1996 == 1, 1, -1)
+echo$reside_1998 <- ifelse(echo$reside_1998 == 0, -1,
+                    ifelse(echo$reside_1998 == 1, 1, 
+                      0))
+echo$reside_2000 <- ifelse(echo$reside_2000 == 0, -1,
+                    ifelse(echo$reside_2000 == 1, 1, 
+                      0))
+echo$reside_2004 <- ifelse(echo$reside_2004 == 0, -1,
+                    ifelse(echo$reside_2004 == 1, 1, 
+                      0))
+echo$reside_2008 <- ifelse(echo$reside_2008 == 0, -1,
+                    ifelse(echo$reside_2008 == 1, 1, 
+                      0))
+echo$reside_2012 <- ifelse(echo$reside_2012 ==  0, -1,
+                    ifelse(echo$reside_2012 == 1, 1, 
+                      0))
 
 ## NUMBER OF KIDS
 # good to go!
@@ -547,8 +566,266 @@ echo$value_2004 <- echo$value_2004 * 1.215
 echo$networth_2008 <- echo$networth_2008 * 1.066
 echo$totinc_2008 <- echo$totinc_2008 * 1.066
 echo$value_2008 <- echo$value_2008 * 1.066
+# 2012 
 # 2012 variables don't need adjusting to their own dollar value
 
+## ZERO WEALTH INDICATOR
+echo$nowealth_1988 <- ifelse(echo$networth_1988 == 0, 1, 0)
+echo$nowealth_1989 <- ifelse(echo$networth_1989 == 0, 1, 0)
+echo$nowealth_1990 <- ifelse(echo$networth_1990 == 0, 1, 0)
+echo$nowealth_1992 <- ifelse(echo$networth_1992 == 0, 1, 0)
+echo$nowealth_1993 <- ifelse(echo$networth_1993 == 0, 1, 0)
+echo$nowealth_1994 <- ifelse(echo$networth_1994 == 0, 1, 0)
+echo$nowealth_1996 <- ifelse(echo$networth_1996 == 0, 1, 0)
+echo$nowealth_1998 <- ifelse(echo$networth_1998 == 0, 1, 0)
+echo$nowealth_2000 <- ifelse(echo$networth_2000 == 0, 1, 0)
+echo$nowealth_2004 <- ifelse(echo$networth_2004 == 0, 1, 0)
+echo$nowealth_2008 <- ifelse(echo$networth_2008 == 0, 1, 0)
+echo$nowealth_2012 <- ifelse(echo$networth_2012 == 0, 1, 0)
+
+## NEGATIVE WEALTH INDICATOR
+echo$negwealth_1988 <- ifelse(echo$networth_1988 < 0, 1, 0)
+echo$negwealth_1989 <- ifelse(echo$networth_1989 < 0, 1, 0)
+echo$negwealth_1990 <- ifelse(echo$networth_1990 < 0, 1, 0)
+echo$negwealth_1992 <- ifelse(echo$networth_1992 < 0, 1, 0)
+echo$negwealth_1993 <- ifelse(echo$networth_1993 < 0, 1, 0)
+echo$negwealth_1994 <- ifelse(echo$networth_1994 < 0, 1, 0)
+echo$negwealth_1996 <- ifelse(echo$networth_1996 < 0, 1, 0)
+echo$negwealth_1998 <- ifelse(echo$networth_1998 < 0, 1, 0)
+echo$negwealth_2000 <- ifelse(echo$networth_2000 < 0, 1, 0)
+echo$negwealth_2004 <- ifelse(echo$networth_2004 < 0, 1, 0)
+echo$negwealth_2008 <- ifelse(echo$networth_2008 < 0, 1, 0)
+echo$negwealth_2012 <- ifelse(echo$networth_2012 < 0, 1, 0)
+
+
+## NATURAL LOGS
+## There will be two difference types of logarithms
+## First - based on Killewald & Bryan. Variables coded as logxyz_DATE
+## Second - Greg's method. Variables coded as ln_xyz_DATE
+
+## First Experience shifts all negative & zero values to 1, then transforms them
+#1988
+echo$logwealth_1988 <- ifelse(echo$networth_1988 <= 0, 1, echo$networth_1988)
+echo$logwealth_1988 <- log(echo$logwealth_1988)
+echo$loginc_1988 <- ifelse(echo$totinc_1988 <= 0, 1, echo$totinc_1988)
+echo$loginc_1988 <- log(echo$loginc_1988)
+echo$logvalue_1988 <- ifelse(echo$value_1988 <= 0, 1, echo$value_1988)
+echo$logvalue_1988 <- log(echo$logvalue_1988)
+# 1989
+echo$logwealth_1989 <- ifelse(echo$networth_1989 <= 0, 0.001, echo$networth_1989)
+echo$logwealth_1989 <- log(echo$logwealth_1989)
+echo$loginc_1989 <- ifelse(echo$totinc_1989 <= 0, 1, echo$totinc_1989)
+echo$loginc_1989 <- log(echo$loginc_1989)
+echo$logvalue_1989 <- ifelse(echo$value_1989 <= 0, 1, echo$value_1989)
+echo$logvalue_1989 <- log(echo$logvalue_1989)
+# 1990
+echo$logwealth_1990 <- ifelse(echo$networth_1990 <= 0, 0.001, echo$networth_1990)
+echo$logwealth_1990 <- log(echo$logwealth_1990)
+echo$loginc_1990 <- ifelse(echo$totinc_1990 <= 0, 1, echo$totinc_1990)
+echo$loginc_1990 <- log(echo$loginc_1990)
+echo$logvalue_1990 <- ifelse(echo$value_1990 <= 0, 1, echo$value_1990)
+echo$logvalue_1990 <- log(echo$logvalue_1990)
+# 1992
+echo$logwealth_1992 <- ifelse(echo$networth_1992 <= 0, 0.001, echo$networth_1992)
+echo$logwealth_1992 <- log(echo$logwealth_1992)
+echo$loginc_1992 <- ifelse(echo$totinc_1992 <= 0, 1, echo$totinc_1992)
+echo$loginc_1992 <- log(echo$loginc_1992)
+echo$logvalue_1992 <- ifelse(echo$value_1992 <= 0, 1, echo$value_1992)
+echo$logvalue_1992 <- log(echo$logvalue_1992)
+# 1993
+echo$logwealth_1993 <- ifelse(echo$networth_1993 <= 0, 0.001, echo$networth_1993)
+echo$logwealth_1993 <- log(echo$logwealth_1993)
+echo$loginc_1993 <- ifelse(echo$totinc_1993 <= 0, 1, echo$totinc_1993)
+echo$loginc_1993 <- log(echo$loginc_1993)
+echo$logvalue_1993 <- ifelse(echo$value_1993 <= 0, 1, echo$value_1993)
+echo$logvalue_1993 <- log(echo$logvalue_1993)
+# 1994
+echo$logwealth_1994 <- ifelse(echo$networth_1994 <= 0, 0.001, echo$networth_1994)
+echo$logwealth_1994 <- log(echo$logwealth_1994)
+echo$loginc_1994 <- ifelse(echo$totinc_1994 <= 0, 1, echo$totinc_1994)
+echo$loginc_1994 <- log(echo$loginc_1994)
+echo$logvalue_1994 <- ifelse(echo$value_1994 <= 0, 1, echo$value_1994)
+echo$logvalue_1994 <- log(echo$logvalue_1994)
+# 1996
+echo$logwealth_1996 <- ifelse(echo$networth_1996 <= 0, 0.001, echo$networth_1996)
+echo$logwealth_1996 <- log(echo$logwealth_1996)
+echo$loginc_1996 <- ifelse(echo$totinc_1996 <= 0, 1, echo$totinc_1996)
+echo$loginc_1996 <- log(echo$loginc_1996)
+echo$logvalue_1996 <- ifelse(echo$value_1996 <= 0, 1, echo$value_1996)
+echo$logvalue_1996 <- log(echo$logvalue_1996)
+# 1998
+echo$logwealth_1998 <- ifelse(echo$networth_1998 <= 0, 0.001, echo$networth_1998)
+echo$logwealth_1998 <- log(echo$logwealth_1998)
+echo$loginc_1998 <- ifelse(echo$totinc_1998 <= 0, 1, echo$totinc_1998)
+echo$loginc_1998 <- log(echo$loginc_1998)
+echo$logvalue_1998 <- ifelse(echo$value_1998 <= 0, 1, echo$value_1998)
+echo$logvalue_1998 <- log(echo$logvalue_1998)
+# 2000
+echo$logwealth_2000 <- ifelse(echo$networth_2000 <= 0, 0.001, echo$networth_2000)
+echo$logwealth_2000 <- log(echo$logwealth_2000)
+echo$loginc_2000 <- ifelse(echo$totinc_2000 <= 0, 1, echo$totinc_2000)
+echo$loginc_2000 <- log(echo$loginc_2000)
+echo$logvalue_2000 <- ifelse(echo$value_2000 <= 0, 1, echo$value_2000)
+echo$logvalue_2000 <- log(echo$logvalue_2000)
+# 2004
+echo$logwealth_2004 <- ifelse(echo$networth_2004 <= 0, 0.001, echo$networth_2004)
+echo$logwealth_2004 <- log(echo$logwealth_2004)
+echo$loginc_2004 <- ifelse(echo$totinc_2004 <= 0, 1, echo$totinc_2004)
+echo$loginc_2004 <- log(echo$loginc_2004)
+echo$logvalue_2004 <- ifelse(echo$value_2004 <= 0, 1, echo$value_2004)
+echo$logvalue_2004 <- log(echo$logvalue_2004)
+#2008
+echo$logwealth_2008 <- ifelse(echo$networth_2008 <= 0, 0.001, echo$networth_2008)
+echo$logwealth_2008 <- log(echo$logwealth_2008)
+echo$loginc_2008 <- ifelse(echo$totinc_2008 <= 0, 1, echo$totinc_2008)
+echo$loginc_2008 <- log(echo$loginc_2008)
+echo$logvalue_2008 <- ifelse(echo$value_2008 <= 0, 1, echo$value_2008)
+echo$logvalue_2008 <- log(echo$logvalue_2008)
+# 2012
+echo$logwealth_2012 <- ifelse(echo$networth_2012 <= 0, 0.001, echo$networth_2012)
+echo$logwealth_2012 <- log(echo$logwealth_2012)
+echo$loginc_2012 <- ifelse(echo$totinc_2012 <= 0, 1, echo$totinc_2012)
+echo$loginc_2012 <- log(echo$loginc_2012)
+echo$logvalue_2012 <- ifelse(echo$value_2012 <= 0, 1, echo$value_2012)
+echo$logvalue_2012 <- log(echo$logvalue_2012)
+
+## Second Method: Greg's Preference
+## Negative values lose sign, 0's move up to one.
+# 1988
+echo$ln_value_1988 <- ifelse(echo$value_1988 <= 0, 1, echo$value_1988)
+echo$ln_value_1988 <- log(echo$ln_value_1988)
+echo$ln_totinc_1988 <- ifelse(echo$totinc_1988 <= 0, 1, echo$totinc_1988 + 1)
+echo$ln_totinc_1988 <- log(echo$ln_totinc_1988)
+echo$ln_wealth_1988 <- ifelse(echo$negwealth_1988 == 1, echo$networth_1988 * -1,
+                       ifelse(echo$networth_1988 == 0, 1,
+                         echo$networth_1988 + 1))
+echo$ln_wealth_1988 <- log(echo$ln_wealth_1988)
+echo$ln_wealth_1988 <- ifelse(echo$negwealth_1988 == 1, echo$ln_wealth_1988 * -1,
+                              echo$ln_wealth_1988)
+# 1989
+echo$ln_value_1989 <- ifelse(echo$value_1989 <= 0, 1, echo$value_1989 + 1)
+echo$ln_value_1989 <- log(echo$ln_value_1989)
+echo$ln_totinc_1989 <- ifelse(echo$totinc_1989 <= 0, 1, echo$totinc_1989 + 1)
+echo$ln_totinc_1989 <- log(echo$ln_totinc_1989)
+echo$ln_wealth_1989 <- ifelse(echo$negwealth_1989 == 1, echo$networth_1989 * -1, 
+                       ifelse(echo$networth_1989 == 0, 1,
+                         echo$networth_1989 + 1))
+echo$ln_wealth_1989 <- log(echo$ln_wealth_1989)
+echo$ln_wealth_1989 <- ifelse(echo$negwealth_1989 == 1, echo$ln_wealth_1989 * -1,
+                         echo$ln_wealth_1989)
+# 1990
+echo$ln_value_1990 <- ifelse(echo$value_1990 <= 0, 1, echo$value_1990 + 1)
+echo$ln_value_1990 <- log(echo$ln_value_1990)
+echo$ln_totinc_1990 <- ifelse(echo$totinc_1990 <= 0, 1, echo$totinc_1990 + 1)
+echo$ln_totinc_1990 <- log(echo$ln_totinc_1990)
+echo$ln_wealth_1990 <- ifelse(echo$negwealth_1990 == 1, echo$networth_1990 * -1,
+                       ifelse(echo$networth_1990 == 0, 1,
+                         echo$networth_1990 + 1))
+echo$ln_wealth_1990 <- log(echo$ln_wealth_1990)
+echo$ln_wealth_1990 <- ifelse(echo$negwealth_1990 == 1, echo$ln_wealth_1990 * -1,
+                              echo$ln_wealth_1990)
+# 1992
+echo$ln_value_1992 <- ifelse(echo$value_1992 <= 0, 1, echo$value_1992 + 1)
+echo$ln_value_1992 <- log(echo$ln_value_1992)
+echo$ln_totinc_1992 <- ifelse(echo$totinc_1992 <= 0, 1, echo$totinc_1992 + 1)
+echo$ln_totinc_1992 <- log(echo$ln_totinc_1992)
+echo$ln_wealth_1992 <- ifelse(echo$negwealth_1992 == 1, echo$networth_1992 * -1,
+                       ifelse(echo$networth_1992 == 0, 1,
+                         echo$networth_1992 + 1))
+echo$ln_wealth_1992 <- log(echo$ln_wealth_1992)
+echo$ln_wealth_1992 <- ifelse(echo$negwealth_1992 == 1, echo$ln_wealth_1992 * -1,
+                              echo$ln_wealth_1992)
+# 1993
+echo$ln_value_1993 <- ifelse(echo$value_1993 <= 0, 1, echo$value_1993 + 1)
+echo$ln_value_1993 <- log(echo$ln_value_1993)
+echo$ln_totinc_1993 <- ifelse(echo$totinc_1993 <= 0, 1, echo$totinc_1993 + 1)
+echo$ln_totinc_1993 <- log(echo$ln_totinc_1993)
+echo$ln_wealth_1993 <- ifelse(echo$negwealth_1993 == 1, echo$networth_1993 * -1,
+                       ifelse(echo$networth_1993 == 0, 1,
+                         echo$networth_1993 + 1))
+echo$ln_wealth_1993 <- log(echo$ln_wealth_1993)
+echo$ln_wealth_1993 <- ifelse(echo$negwealth_1993 == 1, echo$ln_wealth_1993 * -1,
+                         echo$ln_wealth_1993)
+# 1994
+echo$ln_value_1994 <- ifelse(echo$value_1994 <= 0, 1, echo$value_1994 + 1)
+echo$ln_value_1994 <- log(echo$ln_value_1994)
+echo$ln_totinc_1994 <- ifelse(echo$totinc_1994 <= 0, 1, echo$totinc_1994 + 1)
+echo$ln_totinc_1994 <- log(echo$ln_totinc_1994)
+echo$ln_wealth_1994 <- ifelse(echo$negwealth_1994 == 1, echo$networth_1994 * -1,
+                       ifelse(echo$networth_1994 == 0, 1,
+                         echo$networth_1994))
+echo$ln_wealth_1994 <- log(echo$ln_wealth_1994)
+echo$ln_wealth_1994 <- ifelse(echo$negwealth_1994 == 1, echo$ln_wealth_1994 * -1,
+                              echo$ln_wealth_1994)
+# 1996
+echo$ln_value_1996 <- ifelse(echo$value_1996 <= 0, 1, echo$value_1996 + 1)
+echo$ln_value_1996 <- log(echo$ln_value_1996)
+echo$ln_totinc_1996 <- ifelse(echo$totinc_1996 <= 0, 1, echo$totinc_1996 + 1)
+echo$ln_totinc_1996 <- log(echo$ln_totinc_1996)
+echo$ln_wealth_1996 <- ifelse(echo$negwealth_1996 == 1, echo$networth_1996 * -1,
+                       ifelse(echo$networth_1996 == 0, 1,
+                         echo$networth_1996 + 1))
+echo$ln_wealth_1996 <- log(echo$ln_wealth_1996)
+echo$ln_wealth_1996 <- ifelse(echo$negwealth_1996 == 1, echo$ln_wealth_1996 * -1,
+                              echo$ln_wealth_1996)
+# 1998
+echo$ln_value_1998 <- ifelse(echo$value_1998 <= 0, 1, echo$value_1998 + 1)
+echo$ln_value_1998 <- log(echo$ln_value_1998)
+echo$ln_totinc_1998 <- ifelse(echo$totinc_1998 <= 0, 1, echo$totinc_1998 + 1)
+echo$ln_totinc_1998 <- log(echo$ln_totinc_1998)
+echo$ln_wealth_1998 <- ifelse(echo$negwealth_1998 == 1, echo$networth_1998 * -1,
+                       ifelse(echo$networth_1998 == 0, 1,
+                         echo$networth_1998 + 1))
+echo$ln_wealth_1998 <- log(echo$ln_wealth_1998)
+echo$ln_wealth_1998 <- ifelse(echo$negwealth_1998 == 1, echo$ln_wealth_1998 * -1,
+                              echo$ln_wealth_1998)
+# 2000
+echo$ln_value_2000 <- ifelse(echo$value_2000 <= 0, 1, echo$value_2000 + 1)
+echo$ln_value_2000 <- log(echo$ln_value_2000)
+echo$ln_totinc_2000 <- ifelse(echo$totinc_2000 <= 0, 1, echo$totinc_2000 + 1)
+echo$ln_totinc_2000 <- log(echo$ln_totinc_2000)
+echo$ln_wealth_2000 <- ifelse(echo$negwealth_2000 == 1, echo$networth_2000 * -1,
+                       ifelse(echo$networth_2000 == 0 , 1,
+                         echo$networth_2000 + 1))
+echo$ln_wealth_2000 <- log(echo$ln_wealth_2000)
+echo$ln_wealth_2000 <- ifelse(echo$negwealth_2000 == 1, echo$ln_wealth_2000 * -1,
+                              echo$ln_wealth_2000)
+# 2004
+echo$ln_value_2004 <- ifelse(echo$value_2004 <= 0, 1, echo$value_2004 + 1)
+echo$ln_value_2004 <- log(echo$ln_value_2004)
+echo$ln_totinc_2004 <- ifelse(echo$totinc_2004 <= 0, 1, echo$totinc_2004 + 1)
+echo$ln_totinc_2004 <- log(echo$ln_totinc_2004)
+echo$ln_wealth_2004 <- ifelse(echo$negwealth_2004 == 1, echo$networth_2004 * -1,
+                       ifelse(echo$networth_2004 == 0, 1,
+                         echo$networth_2004 + 1))
+echo$ln_wealth_2004 <- log(echo$ln_wealth_2004)
+echo$ln_wealth_2004 <- ifelse(echo$negwealth_2004 == 1, echo$ln_wealth_2004 * -1,
+                              echo$ln_wealth_2004)
+# 2008
+echo$ln_value_2008 <- ifelse(echo$value_2008 <= 0, 1, echo$value_2008 + 1)
+echo$ln_value_2008 <- log(echo$ln_value_2008)
+echo$ln_totinc_2008 <- ifelse(echo$totinc_2008 <= 0, 1, echo$totinc_2008 + 1)
+echo$ln_totinc_2008 <- log(echo$ln_totinc_2008)
+echo$ln_wealth_2008 <- ifelse(echo$negwealth_2008 == 1, echo$networth_2008 * -1,
+                       ifelse(echo$networth_2008 == 0, 1, 
+                         echo$networth_2008 + 1))
+echo$ln_wealth_2008 <- log(echo$ln_wealth_2008)
+echo$ln_wealth_2008 <- ifelse(echo$negwealth_2008 == 1, echo$ln_wealth_2008 * -1,
+                              echo$ln_wealth_2008)
+# 2012
+echo$ln_value_2012 <- ifelse(echo$value_2012 <= 0, 1, echo$value_2012 + 1)
+echo$ln_value_2012 <- log(echo$ln_value_2012)
+echo$ln_totinc_2012 <- ifelse(echo$totinc_2012 <= 0, 1, echo$totinc_2012 + 1)
+echo$ln_totinc_2012 <- log(echo$ln_totinc_2012)
+echo$ln_wealth_2012 <- ifelse(echo$negwealth_2012 == 1, echo$networth_2012 * -1,
+                       ifelse(echo$networth_2012 == 0, 1,
+                         echo$networth_2012 + 1))
+echo$ln_wealth_2012 <- log(echo$ln_wealth_2012)
+echo$ln_wealth_2012 <- ifelse(echo$negwealth_2012 == 1, echo$ln_wealth_2012 * -1,
+                              echo$ln_wealth_2012)
+
+# length(which(echo$networth_2012 < 0)) ## 920
+# length(which(echo$negwealth_2012 == 1)) ## same
 
 ## 2.b Subsetting my overall sample
 
@@ -576,3 +853,17 @@ library(tidyverse)
 # summary(m1)
 # table(dts$totinc012)
 
+
+
+# 1988
+# 1989
+# 1990
+# 1992
+# 1993
+# 1994
+# 1996
+# 1998
+# 2000
+# 2004
+# 2008
+# 2012
