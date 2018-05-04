@@ -556,6 +556,12 @@ echo$reside_2012 <- ifelse(echo$reside_2012 ==  0, -1,
 # na_fix
 
 
+## inflation for literature review comparison w/ SCF data, NOT for analysis!
+# echo$value_2004[echo$value_2004 == 0] <- NA
+# mean(echo$value_2004 * 1.12, na.rm = T)
+# median(echo$value_2004 * 1.12, na.rm = T)
+
+
 ## INFLATION, in 2012 dollaz
 # 1988
 echo$networth_1988 <- echo$networth_1988 * 1.941
@@ -874,22 +880,75 @@ echo <- echo[!(echo$sample_id == "MIL MALE BLACK" |
                echo$sample_id == "MIL FEMALE HISPANIC"), ]
 nrow(echo)
 
-## 3. turning wide to long format
+ 
+## 3. Turning wide to long format
+library(tictoc)
 library(tidyverse)
-# dts <- d_fix %>%
-#   gather(variable, value, -id, -ma_age87, -pa_age87, -ma_ed, -pa_ed, -race, 
-#          -sample_id, -sex, -sibnum_79, -age_79) %>%
-#   mutate(year = parse_number(variable) ) %>%
-#   mutate(variable = gsub("_\\d\\d\\d\\d", "", x = variable) ) %>%
-#   spread(variable, value)
-# View(dts)
-# 
-# options(scipen = 999)
-# m1 <-lm(networth_2012 ~ totinc_2012 + value_2012, data = echo)
-# summary(m1)
-# table(dts$totinc012)
+e <- echo %>%
+  select(-employ_1980, -employ_1981, -employ_1982, -employ_1983, 
+         -employ_1984, -employ_1985, -employ_1986, -employ_1987,
+         -degree_1991, -gift_1991, -value_1991, 
+         -degree_2002, -gift_2002, -value_2002, 
+         -degree_2006, -gift_2006, -value_2006, 
+         -degree_2010, -gift_2010, -value_2010,
+         ## w1
+         -w1_1988, -w1_1989, -w1_1990, -w1_1992, -w1_1993, -w1_1994, -w1_1996, -w1_1998,
+         -w1_2000, -w1_2004, -w1_2008, -w1_2012,
+         # w2
+         -w2_1988, -w2_1989, -w2_1990, -w2_1992, -w2_1993, -w2_1994, -w2_1996, -w2_1998,
+         -w2_2000, -w2_2004, -w2_2008, -w2_2012)
+ncol(echo)
+ncol(e)
+colnames(e)
 
+tic()
+ets <- e %>% 
+  gather(variable, value, -id, -race, -sample_id, -sibnum_79, -age_79, -female,
+         -ma_age87, -ma_age88, -ma_ed, -ma_month87, -ma_year87, -ma_month88, -ma_year88,
+         -pa_age87, -pa_age88, -pa_ed, -pa_month87, -pa_year87, -pa_month88, -pa_year88,
+         -parent_ed, -rental_age88) %>%
+  mutate(year = parse_number(variable) ) %>%
+  mutate(variable = gsub("_\\d\\d\\d\\d", "", x = variable) ) %>%
+  spread(variable, value) %>%
+  arrange(id)
+toc()
 
+## before spread
+# mutate(i = row_number()) %>%
+## after spread
+# select(-i) %>%
+  
+# testing to make sure each id occupies only one row!
+test <- e %>%
+  group_by(id) %>%
+  mutate(sum = n())
+
+dim(ets)
+glimpse(ets)
+
+## adding factors for marital status and region of residence
+ets$region <- factor(ets$region,
+                        levels=c(1.0, 2.0, 3.0, 4.0),
+                        labels=c("Northeast",
+                                 "North Central",
+                                 "South",
+                                 "West"))
+ets$marstat <- factor(ets$marstat,
+                        levels=c(0.0, 1.0, 2.0, 3.0, 6.0),
+                        labels=c("Never Married",
+                                 "Married",
+                                 "Separated",
+                                 "Divorced",
+                                 "Widowed"))
+
+ets$panelyr <- factor(ets$year,
+                      levels = c(1988, 1989, 1990, 1992, 1993, 1994, 1996,
+                                 1998, 2000, 2004, 2008, 2012),
+                      labels = c("1988", "1989", "1990", "1992", "1993", "1994",
+                                 "1996", "1998", "2000", "2004", "2008", "2012"))
+
+table(ets$region)
+table(ets$marstat)
 
 # 1988
 # 1989
@@ -903,3 +962,31 @@ library(tidyverse)
 # 2004
 # 2008
 # 2012
+
+## Time varying variables:
+# wealth
+# income
+# value
+# age
+# education level
+# FT employed
+# marital status ## factor!
+# region ## factors!
+# reside
+
+## making first differences variables
+library(QMSS)
+tic()
+ets <- ddply(ets, "id", mutate,
+             d.wealth = firstD(ln_wealth),
+             d.income = firstD(ln_totinc),
+             d.nowealth = firstD(nowealth),
+             d.negwealth = firstD(negwealth),
+             d.value = firstD(ln_value),
+             d.age = firstD(age),
+             d.educ = firstD(degree),
+             d.employ = firstD(hours),
+             d.reside = firstD(reside),
+             d.kid = firstD(kidnum),
+             d.gift = firstD(gift))
+toc()

@@ -239,179 +239,180 @@ names(new_data) <- c('R0000100',
                                      "Black",
                                      "White"))
     
+## marked out for attempt to create longitudinal data.
     
-    data$R3401200 <- factor(data$R3401200, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R3401400 <- factor(data$R3401400, 
-                            levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Remarried",
-                                     "Widowed"))
-    
-    data$R3074500 <- factor(data$R3074500, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R3074700 <- factor(data$R3074700, 
-                            levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Remarried",
-                                     "Widowed"))
-    
-    data$R4007100 <- factor(data$R4007100, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R4007300 <- factor(data$R4007300, 
-                            levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Remarried",
-                                     "Widowed"))
-    
-    data$R4418200 <- factor(data$R4418200, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R4418400 <- factor(data$R4418400, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$R5166500 <- factor(data$R5166500, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R5166700 <- factor(data$R5166700, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    ## 1994
-    data$R5081200 <- factor(data$R5081200,
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R5081400 <- factor(data$R5081400, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$R6479100 <- factor(data$R6479100, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R6479300 <- factor(data$R6479300, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$R7006800 <- factor(data$R7006800, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R7007000 <- factor(data$R7007000, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$R8496500 <- factor(data$R8496500, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R8496700 <- factor(data$R8496700, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$T2210300 <- factor(data$T2210300, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$T2210500 <- factor(data$T2210500, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$T4112700 <- factor(data$T4112700, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$T4112900 <- factor(data$T4112900, 
-                            levels=c(0.0,1.0,2.0,3.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Widowed"))
-    
-    data$R2870800 <- factor(data$R2870800, 
-                            levels=c(1.0,2.0,3.0,4.0), 
-                            labels=c("Northeast",
-                                     "North Central",
-                                     "South",
-                                     "West"))
-    data$R2871000 <- factor(data$R2871000, 
-                            levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
-                            labels=c("Never Married",
-                                     "Married",
-                                     "Separated",
-                                     "Divorced",
-                                     "Remarried",
-                                     "Widowed"))
+    # data$R3401200 <- factor(data$R3401200, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R3401400 <- factor(data$R3401400, 
+    #                         levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Remarried",
+    #                                  "Widowed"))
+    # 
+    # data$R3074500 <- factor(data$R3074500, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R3074700 <- factor(data$R3074700, 
+    #                         levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Remarried",
+    #                                  "Widowed"))
+    # 
+    # data$R4007100 <- factor(data$R4007100, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R4007300 <- factor(data$R4007300, 
+    #                         levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Remarried",
+    #                                  "Widowed"))
+    # 
+    # data$R4418200 <- factor(data$R4418200, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R4418400 <- factor(data$R4418400, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$R5166500 <- factor(data$R5166500, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R5166700 <- factor(data$R5166700, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # ## 1994
+    # data$R5081200 <- factor(data$R5081200,
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R5081400 <- factor(data$R5081400, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$R6479100 <- factor(data$R6479100, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R6479300 <- factor(data$R6479300, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$R7006800 <- factor(data$R7006800, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R7007000 <- factor(data$R7007000, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$R8496500 <- factor(data$R8496500, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R8496700 <- factor(data$R8496700, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$T2210300 <- factor(data$T2210300, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$T2210500 <- factor(data$T2210500, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$T4112700 <- factor(data$T4112700, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$T4112900 <- factor(data$T4112900, 
+    #                         levels=c(0.0,1.0,2.0,3.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Widowed"))
+    # 
+    # data$R2870800 <- factor(data$R2870800, 
+    #                         levels=c(1.0,2.0,3.0,4.0), 
+    #                         labels=c("Northeast",
+    #                                  "North Central",
+    #                                  "South",
+    #                                  "West"))
+    # data$R2871000 <- factor(data$R2871000, 
+    #                         levels=c(0.0,1.0,2.0,3.0,5.0,6.0), 
+    #                         labels=c("Never Married",
+    #                                  "Married",
+    #                                  "Separated",
+    #                                  "Divorced",
+    #                                  "Remarried",
+    #                                  "Widowed"))
     return(data)
   }  
 
